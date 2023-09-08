@@ -1,0 +1,120 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{47E01577-DBBC-4C91-B58C-EEEE0B19BD20}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Strategy\Strategy.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Chain_of_Responsability\Chain_of_Responsability.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Template_Method\Template_Method.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="State\State.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Command\Command.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Observer\Observer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Adapter\Adapter.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Decorator\Decorator.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Strategy">
+        <MSBuild Projects="Strategy\Strategy.dproj"/>
+    </Target>
+    <Target Name="Strategy:Clean">
+        <MSBuild Projects="Strategy\Strategy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Strategy:Make">
+        <MSBuild Projects="Strategy\Strategy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Chain_of_Responsability">
+        <MSBuild Projects="Chain_of_Responsability\Chain_of_Responsability.dproj"/>
+    </Target>
+    <Target Name="Chain_of_Responsability:Clean">
+        <MSBuild Projects="Chain_of_Responsability\Chain_of_Responsability.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Chain_of_Responsability:Make">
+        <MSBuild Projects="Chain_of_Responsability\Chain_of_Responsability.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Template_Method">
+        <MSBuild Projects="Template_Method\Template_Method.dproj"/>
+    </Target>
+    <Target Name="Template_Method:Clean">
+        <MSBuild Projects="Template_Method\Template_Method.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Template_Method:Make">
+        <MSBuild Projects="Template_Method\Template_Method.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="State">
+        <MSBuild Projects="State\State.dproj"/>
+    </Target>
+    <Target Name="State:Clean">
+        <MSBuild Projects="State\State.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="State:Make">
+        <MSBuild Projects="State\State.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Command">
+        <MSBuild Projects="Command\Command.dproj"/>
+    </Target>
+    <Target Name="Command:Clean">
+        <MSBuild Projects="Command\Command.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Command:Make">
+        <MSBuild Projects="Command\Command.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Observer">
+        <MSBuild Projects="Observer\Observer.dproj"/>
+    </Target>
+    <Target Name="Observer:Clean">
+        <MSBuild Projects="Observer\Observer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Observer:Make">
+        <MSBuild Projects="Observer\Observer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Adapter">
+        <MSBuild Projects="Adapter\Adapter.dproj"/>
+    </Target>
+    <Target Name="Adapter:Clean">
+        <MSBuild Projects="Adapter\Adapter.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Adapter:Make">
+        <MSBuild Projects="Adapter\Adapter.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Decorator">
+        <MSBuild Projects="Decorator\Decorator.dproj"/>
+    </Target>
+    <Target Name="Decorator:Clean">
+        <MSBuild Projects="Decorator\Decorator.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Decorator:Make">
+        <MSBuild Projects="Decorator\Decorator.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
