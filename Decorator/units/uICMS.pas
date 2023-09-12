@@ -1,4 +1,4 @@
-unit uCOFINS;
+unit uICMS;
 
 interface
 
@@ -6,7 +6,7 @@ uses
   uImposto, uIImposto;
 
 type
-  TCofins = class(TImposto)
+  TICMS = class(TImposto)
   protected
     function RealizarCalculoImposto(const AnVlrMercadoria: Extended): Extended; override;
   public
@@ -17,22 +17,22 @@ type
 
 implementation
 
-{ TCofins }
+{ TICMS }
 
-constructor TCofins.Create(const AoImpostoDecorator: IImposto);
+constructor TICMS.Create(const AoImpostoDecorator: IImposto);
 begin
   Self.FoImpostoDecorator := AoImpostoDecorator;
 end;
 
-class function TCofins.New(const AoImpostoDecorator: IImposto): IImposto;
+class function TICMS.New(const AoImpostoDecorator: IImposto): IImposto;
 begin
   Result := Self.Create(AoImpostoDecorator);
 end;
 
-function TCofins.RealizarCalculoImposto(
+function TICMS.RealizarCalculoImposto(
   const AnVlrMercadoria: Extended): Extended;
 begin
-  Result := AnVlrMercadoria * 0.03; //3%
+  Result := AnVlrMercadoria * 0.19; //19%
 end;
 
 end.

@@ -72,6 +72,7 @@ object Form3: TForm3
         Height = 25
         Caption = 'Calcular Impostos Federais'
         TabOrder = 3
+        OnClick = btCalcularImpFederaisClick
       end
     end
     object grpImpostosEstaduais: TGroupBox
@@ -122,7 +123,7 @@ object Form3: TForm3
         Left = 184
         Top = 24
         Width = 137
-        Height = 25
+        Height = 21
         EditLabel.Width = 112
         EditLabel.Height = 13
         EditLabel.Caption = 'Valor Total de Imposto:'
