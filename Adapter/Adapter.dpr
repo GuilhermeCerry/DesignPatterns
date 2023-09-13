@@ -2,7 +2,7 @@ program Adapter;
 
 uses
   Vcl.Forms,
-  uFrmPrinc in 'uFrmPrinc.pas' {Form2},
+  uFrmPrinc in 'uFrmPrinc.pas',
   BibArquivo in '..\Commons\Bib\BibArquivo.pas',
   libXmlToJson in 'units\libXmlToJson.pas',
   uPessoa in 'units\uPessoa.pas',
