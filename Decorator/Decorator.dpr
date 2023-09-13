@@ -2,7 +2,7 @@ program Decorator;
 
 uses
   Vcl.Forms,
-  uFrmPrinc in 'uFrmPrinc.pas' {Form3},
+  uFrmPrinc in 'uFrmPrinc.pas',
   uImposto in 'units\uImposto.pas',
   uIImposto in 'interface\uIImposto.pas',
   uCOFINS in 'units\uCOFINS.pas',
