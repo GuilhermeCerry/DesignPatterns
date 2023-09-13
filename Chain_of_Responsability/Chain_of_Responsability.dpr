@@ -2,7 +2,7 @@ program Chain_of_Responsability;
 
 uses
   Vcl.Forms,
-  uFrmPrinc in 'uFrmPrinc.pas' {TCalculadoraDesconto},
+  uFrmPrinc in 'uFrmPrinc.pas',
   uDesconto in 'Units\uDesconto.pas',
   uDesconto50porCento in 'Units\uDesconto50porCento.pas',
   uDescontoAtacado in 'Units\uDescontoAtacado.pas',
