@@ -33,6 +33,8 @@ function TICMS.RealizarCalculoImposto(
   const AnVlrMercadoria: Extended): Extended;
 begin
   Result := AnVlrMercadoria * 0.19; //19%
+
+  Result := Result + Self.CalcularImpostoDecorator(AnVlrMercadoria);
 end;
 
 end.

@@ -12,6 +12,7 @@ type
     FoImpostoDecorator: IImposto;
     function CalcularImposto(const AnVlrMercadoria: Extended): Extended;
     function RealizarCalculoImposto(const AnVlrMercadoria: Extended): Extended; virtual; abstract;
+    function CalcularImpostoDecorator(const AnVlrMercadoria: Extended): Extended;
   public
     constructor Create;
     destructor Destroy;
@@ -24,9 +25,14 @@ implementation
 function TImposto.CalcularImposto(const AnVlrMercadoria: Extended): Extended;
 begin
   Result := Self.RealizarCalculoImposto(AnVlrMercadoria);
+end;
 
-  if Assigned(FoImpostoDecorator) then
-    Result := Result + FoImpostoDecorator.RealizarCalculoImposto(AnVlrMercadoria);
+function TImposto.CalcularImpostoDecorator(
+  const AnVlrMercadoria: Extended): Extended;
+begin
+  Result := 0;
+  if Assigned(Self.FoImpostoDecorator) then
+    Result := Self.FoImpostoDecorator.RealizarCalculoImposto(AnVlrMercadoria);
 end;
 
 constructor TImposto.Create;

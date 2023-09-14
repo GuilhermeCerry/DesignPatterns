@@ -102,6 +102,7 @@ object Form3: TForm3
         Height = 25
         Caption = 'Calcular Impostos Estaduais'
         TabOrder = 1
+        OnClick = btnCalcImpEstaduaisClick
       end
     end
     object pnCalc: TPanel
@@ -112,16 +113,17 @@ object Form3: TForm3
       Align = alBottom
       TabOrder = 2
       object btVlrTotImposto: TButton
-        Left = 16
+        Left = 8
         Top = 24
-        Width = 129
+        Width = 170
         Height = 25
-        Caption = 'Calcular Total Imposto'
+        Caption = 'Calcular Total Todos os Impostos'
         TabOrder = 0
+        OnClick = btVlrTotImpostoClick
       end
       object lbVlrTotImposto: TLabeledEdit
-        Left = 184
-        Top = 24
+        Left = 190
+        Top = 26
         Width = 137
         Height = 21
         EditLabel.Width = 112
@@ -144,12 +146,14 @@ object Form3: TForm3
         Top = 24
         Width = 121
         Height = 21
+        Alignment = taRightJustify
         EditLabel.Width = 84
         EditLabel.Height = 13
         EditLabel.Caption = 'Valor Mercadoria:'
         LabelPosition = lpLeft
         NumbersOnly = True
         TabOrder = 0
+        Text = '0'
       end
     end
   end

@@ -32,6 +32,8 @@ end;
 function TIPI.RealizarCalculoImposto(const AnVlrMercadoria: Extended): Extended;
 begin
   Result := AnVlrMercadoria * 0.08; //8%
+
+  Result := Result + Self.CalcularImpostoDecorator(AnVlrMercadoria);
 end;
 
 end.

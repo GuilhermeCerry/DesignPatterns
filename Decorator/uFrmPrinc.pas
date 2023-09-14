@@ -23,6 +23,8 @@ type
     btCalcularImpFederais: TButton;
     btnCalcImpEstaduais: TButton;
     procedure btCalcularImpFederaisClick(Sender: TObject);
+    procedure btnCalcImpEstaduaisClick(Sender: TObject);
+    procedure btVlrTotImpostoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,6 +49,42 @@ begin
       TImpostoFactory.COFINS(
         TImpostoFactory.PIS(
           nil
+        )
+      )
+    ).CalcularImposto(nVlrMercadoria).ToString;
+
+  lbIPI.Text    := TImpostoFactory.IPI(nil).CalcularImposto(nVlrMercadoria).ToString;
+  lbPis.Text    := TImpostoFactory.PIS(nil).CalcularImposto(nVlrMercadoria).ToString;
+  lbCofins.Text := TImpostoFactory.COFINS(nil).CalcularImposto(nVlrMercadoria).ToString;
+end;
+
+procedure TForm3.btnCalcImpEstaduaisClick(Sender: TObject);
+var
+  nVlrMercadoria: Extended;
+begin
+  nVlrMercadoria := StrToFloat(lbVlrMercadoria.Text);
+
+  lbVlrTotImposto.Text :=
+    TImpostoFactory.ICMS(
+      nil
+    ).CalcularImposto(nVlrMercadoria).ToString;
+
+  lbICMS.Text := lbVlrTotImposto.Text;
+end;
+
+procedure TForm3.btVlrTotImpostoClick(Sender: TObject);
+var
+  nVlrMercadoria: Extended;
+begin
+  nVlrMercadoria := StrToFloat(lbVlrMercadoria.Text);
+
+  lbVlrTotImposto.Text :=
+    TImpostoFactory.IPI(
+      TImpostoFactory.COFINS(
+        TImpostoFactory.PIS(
+          TImpostoFactory.ICMS(
+            nil
+          )
         )
       )
     ).CalcularImposto(nVlrMercadoria).ToString;

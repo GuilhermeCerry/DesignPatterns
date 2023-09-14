@@ -33,6 +33,8 @@ function TCofins.RealizarCalculoImposto(
   const AnVlrMercadoria: Extended): Extended;
 begin
   Result := AnVlrMercadoria * 0.03; //3%
+
+  Result := Result + Self.CalcularImpostoDecorator(AnVlrMercadoria);
 end;
 
 end.

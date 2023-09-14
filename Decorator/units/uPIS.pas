@@ -32,6 +32,8 @@ end;
 function TPIS.RealizarCalculoImposto(const AnVlrMercadoria: Extended): Extended;
 begin
   Result := AnVlrMercadoria * 0.0065; //0,65%
+
+  Result := Result + Self.CalcularImpostoDecorator(AnVlrMercadoria);
 end;
 
 end.
