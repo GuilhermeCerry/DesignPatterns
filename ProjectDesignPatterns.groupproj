@@ -27,6 +27,9 @@
         <Projects Include="Decorator\Decorator.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Composite\Composite.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -107,14 +110,23 @@
     <Target Name="Decorator:Make">
         <MSBuild Projects="Decorator\Decorator.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Composite">
+        <MSBuild Projects="Composite\Composite.dproj"/>
+    </Target>
+    <Target Name="Composite:Clean">
+        <MSBuild Projects="Composite\Composite.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Composite:Make">
+        <MSBuild Projects="Composite\Composite.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator"/>
+        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean"/>
+        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean;Composite:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make"/>
+        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make;Composite:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
