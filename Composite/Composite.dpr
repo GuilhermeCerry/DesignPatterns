@@ -5,7 +5,8 @@ uses
   uFrmPrinc in 'uFrmPrinc.pas' {Form4},
   uIObjetoCargaComposite in 'interface\uIObjetoCargaComposite.pas',
   uCaixaCargaComposite in 'units\uCaixaCargaComposite.pas',
-  uItemCargaComposite in 'units\uItemCargaComposite.pas';
+  uItemCargaComposite in 'units\uItemCargaComposite.pas',
+  uIItem in 'interface\uIItem.pas';
 
 {$R *.res}
 

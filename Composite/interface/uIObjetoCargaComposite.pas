@@ -8,6 +8,8 @@ type
     function GetValor: Extended;
     function GetQuantidade: Extended;
     function GetDescricao: string;
+
+    function SetDescricao(const AcDescricao: String): IObjetoCargaComposite;
   end;
 
 implementation

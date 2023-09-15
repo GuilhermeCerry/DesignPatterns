@@ -19,8 +19,6 @@ type
     function SetDescricao(const AcDescricao: String): IObjetoCargaComposite;
     function SetValor(const AnValor: Extended): IItem;
     function SetQuantidade(const AnQuantidade: Extended): IItem;
-
-
   public
     class function New: IObjetoCargaComposite;
 
