@@ -1,4 +1,4 @@
-object Form4: TForm4
+object FormPrinc: TFormPrinc
   Left = 0
   Top = 0
   Caption = 'Forma'#231#227'o de Carga'
@@ -52,7 +52,7 @@ object Form4: TForm4
         EditLabel.Caption = 'Quantidade:.....'
         LabelPosition = lpLeft
         NumbersOnly = True
-        TabOrder = 1
+        TabOrder = 2
       end
       object lb_Quantidade: TLabeledEdit
         Left = 96
@@ -64,15 +64,16 @@ object Form4: TForm4
         EditLabel.Caption = 'Valor Unit'#225'rio:...'
         LabelPosition = lpLeft
         NumbersOnly = True
-        TabOrder = 2
+        TabOrder = 1
       end
-      object Button1: TButton
+      object btAddItem: TButton
         Left = 15
         Top = 122
         Width = 120
         Height = 25
         Caption = 'Adicionar Item'
         TabOrder = 3
+        OnClick = btAddItemClick
       end
     end
     object grpCaixa: TGroupBox
@@ -94,13 +95,14 @@ object Form4: TForm4
         LabelPosition = lpLeft
         TabOrder = 0
       end
-      object btAddcAIXA: TButton
+      object btAddCaixa: TButton
         Left = 14
         Top = 122
         Width = 120
         Height = 25
         Caption = 'Adicionar Caixa'
         TabOrder = 1
+        OnClick = btAddCaixaClick
       end
     end
   end

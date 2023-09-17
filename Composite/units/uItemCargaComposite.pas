@@ -3,22 +3,29 @@ unit uItemCargaComposite;
 interface
 
 uses
-  uIObjetoCargaComposite, uIItem;
+  uIObjetoCargaComposite;
 
 type
-  TItemCargaComposite = class(TInterfacedObject, IObjetoCargaComposite, IItem)
+  TItemCargaComposite = class(TInterfacedObject, IObjetoCargaComposite)
   private
     FcDescricao: string;
     FnQuantidade: Extended;
     FnValor: Extended;
+    FnCamada: Integer;
   protected
     function GetValor: Extended;
     function GetQuantidade: Extended;
     function GetDescricao: string;
+    function GetResumo: String;
+    function GetCamada: integer;
+    function GetValorTotal: Extended;
 
     function SetDescricao(const AcDescricao: String): IObjetoCargaComposite;
-    function SetValor(const AnValor: Extended): IItem;
-    function SetQuantidade(const AnQuantidade: Extended): IItem;
+    function SetValor(const AnValor: Extended): IObjetoCargaComposite;
+    function SetQuantidade(const AnQuantidade: Extended): IObjetoCargaComposite;
+    function SetCamada(const AnCamada: Integer): IObjetoCargaComposite;
+
+    function AddItem(AoItem: IObjetoCargaComposite): IObjetoCargaComposite; virtual; abstract;
   public
     class function New: IObjetoCargaComposite;
 
@@ -27,6 +34,9 @@ type
   end;
 
 implementation
+
+uses
+  System.SysUtils;
 
 { TItemCarga }
 
@@ -41,6 +51,13 @@ begin
   Result := Self.Create;
 end;
 
+function TItemCargaComposite.SetCamada(
+  const AnCamada: Integer): IObjetoCargaComposite;
+begin
+  Result := Self;
+  FnCamada := AnCamada;
+end;
+
 function TItemCargaComposite.SetDescricao(
   const AcDescricao: String): IObjetoCargaComposite;
 begin
@@ -49,17 +66,22 @@ begin
 end;
 
 function TItemCargaComposite.SetQuantidade(
-  const AnQuantidade: Extended): IItem;
+  const AnQuantidade: Extended): IObjetoCargaComposite;
 begin
   Result := Self;
   FnQuantidade := AnQuantidade;
 end;
 
 function TItemCargaComposite.SetValor(
-  const AnValor: Extended): IItem;
+  const AnValor: Extended): IObjetoCargaComposite;
 begin
   Result := Self;
   FnValor := AnValor;
+end;
+
+function TItemCargaComposite.GetCamada: integer;
+begin
+  Result := FnCamada;
 end;
 
 function TItemCargaComposite.GetDescricao: string;
@@ -69,12 +91,22 @@ end;
 
 function TItemCargaComposite.GetQuantidade: Extended;
 begin
-  //
+  Result := FnQuantidade;
+end;
+
+function TItemCargaComposite.GetResumo: String;
+begin
+  Result := Format('- Item: %s - Quantidade: %f - Valor Unitário: %f;', [FcDescricao, FnQuantidade, FnValor]) + sLineBreak;
 end;
 
 function TItemCargaComposite.GetValor: Extended;
 begin
-  //
+  Result := FnValor;
+end;
+
+function TItemCargaComposite.GetValorTotal: Extended;
+begin
+  Result := FnValor * FnQuantidade;
 end;
 
 destructor TItemCargaComposite.Destroy;
