@@ -33,6 +33,9 @@
         <Projects Include="Facade\Facade.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -131,14 +134,23 @@
     <Target Name="Facade:Make">
         <MSBuild Projects="Facade\Facade.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Proxy">
+        <MSBuild Projects="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj"/>
+    </Target>
+    <Target Name="Proxy:Clean">
+        <MSBuild Projects="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Proxy:Make">
+        <MSBuild Projects="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite;Facade"/>
+        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite;Facade;Proxy"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean;Composite:Clean;Facade:Clean"/>
+        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean;Composite:Clean;Facade:Clean;Proxy:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make;Composite:Make;Facade:Make"/>
+        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make;Composite:Make;Facade:Make;Proxy:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
