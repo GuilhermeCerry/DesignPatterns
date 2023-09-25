@@ -20,6 +20,9 @@ type
 
 implementation
 
+uses
+  System.SysUtils;
+
 { TCustoMedioAnteriorProxy }
 
 constructor TCustoMedioAnteriorProxy.Create;
@@ -30,7 +33,8 @@ end;
 
 destructor TCustoMedioAnteriorProxy.Destroy;
 begin
-  //
+  if Assigned(FoCustoMedioAnterior) then
+    FreeAndNil(FoCustoMedioAnterior);
 end;
 
 function TCustoMedioAnteriorProxy.GetValor: Extended;

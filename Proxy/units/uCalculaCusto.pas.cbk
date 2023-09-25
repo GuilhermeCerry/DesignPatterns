@@ -1,4 +1,4 @@
-unit uCalculaCusto;
+﻿unit uCalculaCusto;
 
 interface
 
@@ -36,6 +36,9 @@ type
   end;
 
 implementation
+
+uses
+  System.SysUtils;
 
 { TCalculaCusto }
 

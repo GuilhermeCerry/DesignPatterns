@@ -71,6 +71,17 @@ begin
       .SetQuantidade(StrToFloat(lb_Quantidade.Text))
   );
 
+  {
+   Padrão Composite se define na composição de um objeto por outro objeto, no exemplo desse
+   projeto, a caixa principal pode ser composta por outra caixa, por itens ou por caixas e itens.
+   Logo, caso precise descobrir algum dado da composição da caixa, ela vai chamar diretamente
+   esses objetos de compõe ela.
+   Esse padrão, pode ser utilizado, principalmente quando o a arquitetura do objetos forem parecidos
+   com uma arvóre, ou seja, um galho é composto por 2 galhos, e esses dois galhos são compostos por mais 3 galhos
+   e assim sucessivamente. Em um exemplo mais cotidiano, pode ser entendido como uma situação de Pai e Filho, onde
+   o pai pode ter vários filhos e os filhos terem mais filhos.
+  }
+
   ListarResumo;
 end;
 

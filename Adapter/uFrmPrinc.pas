@@ -4,8 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
-  libXmlToJson, uPessoa, Json;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, uPessoa, Json;
 
 type
   TForm2 = class(TForm)
@@ -48,34 +47,6 @@ uses
 
 {$R *.dfm}
 
-//procedure TForm2.bt_XmlClick(Sender: TObject);
-//var
-//  cCaminho: string;
-//  oXml: TXMLDocument;
-//  oStream: TMemoryStream;
-//  sJSON : string;
-//  oJson: TJSONObject;
-//begin
-//  if BibArquivo.SelPath('Selecione o diretório do Xml', cCaminho, True, ['.xml']) then
-//    ed_CaminhoXml.Text := cCaminho;
-//
-//  oXml := TXmlDocument.Create(nil);
-//  oXml.LoadFromFile(cCaminho);
-//
-//  sJSON := xml_to_json(oXml.node);
-////  oJson := TJSONObject.ParseJSONValue(sJSON) as TJSONObject;
-//  mmXml.Lines.Text := sJSON;
-//
-//  //oJson.ToString;
-//
-////  if cCaminho <> EmptyStr then
-////    begin
-//////     mmXml.Lines.LoadFromFile(cCaminho);
-//////     mmXml.Lines.Text := UTF8Encode(FormatXMLData(mmXml.Lines.Text));
-////    mmXml.Lines.Text := (oXmlToJsonAdapter.fileToReturnType(cCaminho)).ToString;
-////  end;
-//end;
-
 procedure TForm2.btJsonClick(Sender: TObject);
 var
   oDados: TDictionary<string, string>;
@@ -97,6 +68,15 @@ begin
   oDados.Add('CPF', FoPessoa.CPF);
   oDados.Add('Nome', FoPessoa.Nome);
 
+  {
+   Padrão Adapter consiste em adaptar um objeto a outro, quando esse objeto a ser adpatado não tem
+   relação direta com o outro. No exemplo desse projeto, a classe de pessoa(uPessoa), é adaptada
+   a um objeto JSON, através da classe TJsonAdapterClient, que teoricamente, não tem nada haver com uma pessoa.
+   Assim deixando o padrão Adapter como uma opção a ser utilizada para a construção desse projeto.
+   Citando um outro exemplo, pode  ser entendido como um "Adapter" o "T" colocado na entrada para
+   adaptar com a tomada do aparelho.
+  }
+
   FcJson :=
     TJsonAdapterClient.New
       .GetJson(oDados);
@@ -109,9 +89,9 @@ var
   cResponse: string;
 begin
   try
-    cResponse := THttpAdapterClient.New.
-        Post('https://jsonplaceholder.typicode.com/posts', FcJson).
-        GetResponse;
+    cResponse := THttpAdapterClient.New
+        .Post('https://jsonplaceholder.typicode.com/posts', FcJson) //Api para teste de JSON
+        .GetResponse;
 
     mmJson.Clear;
     mmJson.Lines.Add(

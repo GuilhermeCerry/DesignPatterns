@@ -44,6 +44,19 @@ var
 begin
   nVlrMercadoria := StrToFloat(lbVlrMercadoria.Text);
 
+  {
+   Padrão Decorator, conssite em um objeto "decorar" o próximo objeto em uma cadeia de
+   processos adicionais. Como exemplo, esse projeto apresenta o cálculo dos impostos,
+   sendo que o total dos impostos(valor a ser descoberto) será a soma deles. Em um outro
+   exemplo mais cotidiano, pode ser entendido no processo de se vestir, onde é colocado uma calça,
+   depois uma camiseta e depois uma jaqueta. Com a junção dessas três peças de roupa, gerou um resultado,
+   que é o "look" do dia.
+   Para comparação com o "Chain of Responsability", o Decorator enquadra em processos adicionais, já a
+   cadeia de responsabilidades irá ser utilizada para realizar várias verificaçãoes de métodos até
+   que uma se enquadre no verificação pré definida, ou seja, dentre os objetos da cadeia, somente um
+   irá fazer parte do resultado.
+  }
+
   lbVlrTotImposto.Text :=
     TImpostoFactory.IPI(
       TImpostoFactory.COFINS(
