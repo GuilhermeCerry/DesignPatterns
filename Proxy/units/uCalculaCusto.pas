@@ -3,7 +3,7 @@ unit uCalculaCusto;
 interface
 
 uses
-  BibEnum;
+  BibEnum, uIProxyCusto, uCustoMedioAnteriorProxy, uCustoMedioAnterior;
 
 type
 
@@ -18,10 +18,13 @@ type
     FnCusto: Extended;
     FnVlrUnitario: Extended;
     FnQuantidade: Extended;
+    FoCustoMedioAnteriorProxy: IProxyCusto;
+    FoCustoMedioAnterior: TCustoMedioAnterior;
 
     procedure CalcularMedio;
     procedure CalcularMedioPresente;
     procedure CalcularMedioAnterior;
+    function PV_FV(AnValor: Extended): Extended;
   protected
     function Calcular(const AenCusto: BibEnum.enTipoCustoCalc): ICalculaCusto;
     function GetCusto: Extended;
@@ -50,17 +53,38 @@ end;
 
 procedure TCalculaCusto.CalcularMedio;
 begin
-  //
+  //(Custo_Medio_Anterior * Saldo(2)) + (Custo(2) + (Valor_Unitario - (Valor_Unitario *  Perc_Desc_Total / 100)))
+
+  FnCusto := (FoCustoMedioAnterior.RetornarCustoMedioAnterior * 56) +
+   (2 + (FnVlrUnitario - (FnVlrUnitario *  (0 / 100))));
+
+//  FnCusto := (FoCustoMedioAnteriorProxy.GetValor * 56) +
+//   (2 + (FnVlrUnitario - (FnVlrUnitario *  (0 / 100))));  //Com Proxy
 end;
 
 procedure TCalculaCusto.CalcularMedioAnterior;
 begin
-  //
+  //Custo_Medio_Anterior
+
+  FnCusto := FoCustoMedioAnterior.RetornarCustoMedioAnterior;
+
+//  FnCusto := FoCustoMedioAnteriorProxy.GetValor;  //Com Proxy
 end;
 
 procedure TCalculaCusto.CalcularMedioPresente;
 begin
-  //
+  //  ((PV_FV(Custo_Medio_Anterior) * (Saldo(2))) + (Valor_Unitario - (Valor_Unitario *  Perc_Desc_Total / 100)) + (Quantidade )
+
+  FnCusto := ((PV_FV(FoCustoMedioAnterior.RetornarCustoMedioAnterior) * (56)) +
+    (FnVlrUnitario - (FnVlrUnitario *  (0 / 100))) + (FnQuantidade));
+
+//  FnCusto := ((PV_FV(FoCustoMedioAnteriorProxy.GetValor) * (56)) +
+//    (FnVlrUnitario - (FnVlrUnitario *  (0 / 100))) + (FnQuantidade));  //Com Proxy
+end;
+
+function TCalculaCusto.PV_FV(AnValor: Extended): Extended;
+begin
+  Result := AnValor + (AnValor * 0.001);
 end;
 
 constructor TCalculaCusto.Create(const AnValorUnit,
@@ -68,6 +92,9 @@ constructor TCalculaCusto.Create(const AnValorUnit,
 begin
   FnVlrUnitario := AnValorUnit;
   FnQuantidade := AnQuantidade;
+
+  FoCustoMedioAnterior := TCustoMedioAnterior.Create;
+  FoCustoMedioAnteriorProxy := TCustoMedioAnteriorProxy.New;
 end;
 
 destructor TCalculaCusto.Destroy;

@@ -2,7 +2,7 @@ program Composite;
 
 uses
   Vcl.Forms,
-  uFrmPrinc in 'uFrmPrinc.pas' {Form4},
+  uFrmPrinc in 'uFrmPrinc.pas' {FormPrinc},
   uIObjetoCargaComposite in 'interface\uIObjetoCargaComposite.pas',
   uCaixaCargaComposite in 'units\uCaixaCargaComposite.pas',
   uItemCargaComposite in 'units\uItemCargaComposite.pas';
@@ -12,6 +12,6 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TFormPrinc, FormPrinc);
   Application.Run;
 end.

@@ -1,9 +1,9 @@
 object Form6: TForm6
   Left = 0
   Top = 0
-  Caption = 'Form6'
-  ClientHeight = 257
-  ClientWidth = 670
+  Caption = 'Calculadora de Custos'
+  ClientHeight = 233
+  ClientWidth = 825
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,23 +11,29 @@ object Form6: TForm6
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 13
   object pnPrinc: TPanel
     Left = 0
     Top = 0
-    Width = 670
-    Height = 257
+    Width = 825
+    Height = 233
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 670
+    ExplicitHeight = 257
     object grpDadosCompra: TGroupBox
       Left = 1
-      Top = 171
-      Width = 668
-      Height = 85
+      Top = 145
+      Width = 823
+      Height = 87
       Align = alClient
       Caption = 'Dados Compra:'
       TabOrder = 0
+      ExplicitTop = 171
+      ExplicitWidth = 668
+      ExplicitHeight = 85
       object lb_Quantidade: TLabeledEdit
         Left = 118
         Top = 21
@@ -67,34 +73,34 @@ object Form6: TForm6
     object grpCustos: TGroupBox
       Left = 1
       Top = 1
-      Width = 668
-      Height = 170
+      Width = 823
+      Height = 144
       Align = alTop
       Caption = 'Custos:'
       TabOrder = 1
+      ExplicitWidth = 867
       object lb_FormulaCustoMedio: TLabel
         Left = 215
         Top = 32
-        Width = 360
-        Height = 26
+        Width = 538
+        Height = 21
+        AutoSize = False
         Caption = 
-          '(((Custo_Medio_Anterior * Saldo(2)) +'#13#10'   ((Custo(2) + ((Valor_U' +
-          'nitario - (Valor_Unitario *  Perc_Desc_Total / 100))'
+          '(Custo_Medio_Anterior * Saldo(2)) + (Custo(2) + (Valor_Unitario ' +
+          '- (Valor_Unitario *  Perc_Desc_Total / 100)))'
       end
       object lb_FormulaCustoMedioPresente: TLabel
         Left = 215
-        Top = 78
-        Width = 451
-        Height = 39
+        Top = 71
+        Width = 602
+        Height = 16
         Caption = 
-          '((PV_FV(Custo_Medio_Anterior) * (Saldo(2))) + (((Valor_Unitario ' +
-          ' + ((Valor_Unitario - '#13#10'  (Valor_Unitario *  Perc_Desc_Total / 1' +
-          '00)) * ((((1) / 1) * Valor_Unitario) / Valor_Unitario )) ) )'#13#10'* ' +
-          'Quantidade * (-1+1) ) ) /  ((Saldo(2) + (Quantidade * (+1)))) '
+          '((PV_FV(Custo_Medio_Anterior) * (Saldo(2))) + (Valor_Unitario - ' +
+          '(Valor_Unitario *  Perc_Desc_Total / 100)) + (Quantidade )  '
       end
       object lb_FormulaCustoMedioAnt: TLabel
         Left = 215
-        Top = 131
+        Top = 110
         Width = 115
         Height = 13
         Caption = '(Custo_Medio_Anterior)'
@@ -116,7 +122,7 @@ object Form6: TForm6
       end
       object lb_CustoPresente: TLabeledEdit
         Left = 118
-        Top = 75
+        Top = 66
         Width = 75
         Height = 21
         Alignment = taRightJustify
@@ -131,7 +137,7 @@ object Form6: TForm6
       end
       object lb_CustoMedioAnt: TLabeledEdit
         Left = 118
-        Top = 126
+        Top = 105
         Width = 75
         Height = 21
         Alignment = taRightJustify

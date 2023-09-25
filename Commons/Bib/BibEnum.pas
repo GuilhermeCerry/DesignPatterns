@@ -7,7 +7,7 @@ uses
 
 type
 
-enTipoCustoCalc = (tccCusto, tccMedio, tccPrecoCompra, tccMedioPresente);
+enTipoCustoCalc = (tccCusto, tccMedio, tccPrecoCompra, tccMedioPresente, tccMedioAnterior);
 
 function IntToTipoCustoCalc(const AnIndex: integer): enTipoCustoCalc;
 
@@ -19,7 +19,7 @@ var
 begin
     Result := TEnumUtil.IntToEnumerado(bOK, AnIndex,
                            [0, 1, 2, 3],
-                           [tccCusto, tccMedio, tccPrecoCompra, tccMedioPresente]);
+                           [tccCusto, tccMedio, tccPrecoCompra, tccMedioPresente, tccMedioAnterior]);
 end;
 
 end.

@@ -33,7 +33,7 @@
         <Projects Include="Facade\Facade.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj">
+        <Projects Include="Proxy\Proxy.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -135,13 +135,13 @@
         <MSBuild Projects="Facade\Facade.dproj" Targets="Make"/>
     </Target>
     <Target Name="Proxy">
-        <MSBuild Projects="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj"/>
+        <MSBuild Projects="Proxy\Proxy.dproj"/>
     </Target>
     <Target Name="Proxy:Clean">
-        <MSBuild Projects="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj" Targets="Clean"/>
+        <MSBuild Projects="Proxy\Proxy.dproj" Targets="Clean"/>
     </Target>
     <Target Name="Proxy:Make">
-        <MSBuild Projects="..\..\DesignPatterns\designpatterns\Proxy\Proxy.dproj" Targets="Make"/>
+        <MSBuild Projects="Proxy\Proxy.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
         <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite;Facade;Proxy"/>

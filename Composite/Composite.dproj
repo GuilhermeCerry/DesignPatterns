@@ -99,7 +99,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="uFrmPrinc.pas">
-            <Form>Form4</Form>
+            <Form>FormPrinc</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="interface\uIObjetoCargaComposite.pas"/>
