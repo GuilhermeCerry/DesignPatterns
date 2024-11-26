@@ -36,6 +36,18 @@
         <Projects Include="Proxy\Proxy.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Abstract Factory\Abstract_Factory.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Factory Method\Factory_Method.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Prototype\Prototype.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Singleton\Singleton.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -143,14 +155,50 @@
     <Target Name="Proxy:Make">
         <MSBuild Projects="Proxy\Proxy.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Abstract_Factory">
+        <MSBuild Projects="Abstract Factory\Abstract_Factory.dproj"/>
+    </Target>
+    <Target Name="Abstract_Factory:Clean">
+        <MSBuild Projects="Abstract Factory\Abstract_Factory.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Abstract_Factory:Make">
+        <MSBuild Projects="Abstract Factory\Abstract_Factory.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Factory_Method">
+        <MSBuild Projects="Factory Method\Factory_Method.dproj"/>
+    </Target>
+    <Target Name="Factory_Method:Clean">
+        <MSBuild Projects="Factory Method\Factory_Method.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Factory_Method:Make">
+        <MSBuild Projects="Factory Method\Factory_Method.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Prototype">
+        <MSBuild Projects="Prototype\Prototype.dproj"/>
+    </Target>
+    <Target Name="Prototype:Clean">
+        <MSBuild Projects="Prototype\Prototype.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Prototype:Make">
+        <MSBuild Projects="Prototype\Prototype.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Singleton">
+        <MSBuild Projects="Singleton\Singleton.dproj"/>
+    </Target>
+    <Target Name="Singleton:Clean">
+        <MSBuild Projects="Singleton\Singleton.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Singleton:Make">
+        <MSBuild Projects="Singleton\Singleton.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite;Facade;Proxy"/>
+        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite;Facade;Proxy;Abstract_Factory;Factory_Method;Prototype;Singleton"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean;Composite:Clean;Facade:Clean;Proxy:Clean"/>
+        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean;Composite:Clean;Facade:Clean;Proxy:Clean;Abstract_Factory:Clean;Factory_Method:Clean;Prototype:Clean;Singleton:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make;Composite:Make;Facade:Make;Proxy:Make"/>
+        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make;Composite:Make;Facade:Make;Proxy:Make;Abstract_Factory:Make;Factory_Method:Make;Prototype:Make;Singleton:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
