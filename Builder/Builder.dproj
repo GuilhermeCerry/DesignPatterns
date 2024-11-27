@@ -124,9 +124,13 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="View\Builder.View.Principal.pas">
-            <Form>Form7</Form>
+            <Form>FPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Model\Builder.Model.Carro.pas"/>
+        <DCCReference Include="Model\Builder.Model.Interfaces.pas"/>
+        <DCCReference Include="Model\Builder.Model.Carro.Builder.pas"/>
+        <DCCReference Include="Controller\Builder.Controller.Director.CarroVW.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

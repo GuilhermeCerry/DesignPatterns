@@ -35,6 +35,8 @@ procedure TFPrincipal.btGolfClick(Sender: TObject);
 var
   Builder: iBuilderCarro;
 begin
+  {Deixa a cargo do Director saber o que o carro tem e não tem, e o builder fica responsável por criar o objeto}
+
   Builder := TBuilderCarro.New;
   TDirectorCarroVW.ConstruirCarroGolfComfortiline2005(Builder);
   mmCarro.Lines.Add(Builder.GetCarro.GetDescricaoCarro);
