@@ -48,6 +48,9 @@
         <Projects Include="Singleton\Singleton.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Builder\Builder.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -191,14 +194,23 @@
     <Target Name="Singleton:Make">
         <MSBuild Projects="Singleton\Singleton.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Builder">
+        <MSBuild Projects="Builder\Builder.dproj"/>
+    </Target>
+    <Target Name="Builder:Clean">
+        <MSBuild Projects="Builder\Builder.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Builder:Make">
+        <MSBuild Projects="Builder\Builder.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite;Facade;Proxy;Abstract_Factory;Factory_Method;Prototype;Singleton"/>
+        <CallTarget Targets="Strategy;Chain_of_Responsability;Template_Method;State;Command;Observer;Adapter;Decorator;Composite;Facade;Proxy;Abstract_Factory;Factory_Method;Prototype;Singleton;Builder"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean;Composite:Clean;Facade:Clean;Proxy:Clean;Abstract_Factory:Clean;Factory_Method:Clean;Prototype:Clean;Singleton:Clean"/>
+        <CallTarget Targets="Strategy:Clean;Chain_of_Responsability:Clean;Template_Method:Clean;State:Clean;Command:Clean;Observer:Clean;Adapter:Clean;Decorator:Clean;Composite:Clean;Facade:Clean;Proxy:Clean;Abstract_Factory:Clean;Factory_Method:Clean;Prototype:Clean;Singleton:Clean;Builder:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make;Composite:Make;Facade:Make;Proxy:Make;Abstract_Factory:Make;Factory_Method:Make;Prototype:Make;Singleton:Make"/>
+        <CallTarget Targets="Strategy:Make;Chain_of_Responsability:Make;Template_Method:Make;State:Make;Command:Make;Observer:Make;Adapter:Make;Decorator:Make;Composite:Make;Facade:Make;Proxy:Make;Abstract_Factory:Make;Factory_Method:Make;Prototype:Make;Singleton:Make;Builder:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
