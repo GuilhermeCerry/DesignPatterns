@@ -41,7 +41,7 @@ procedure TFPrincipal.btCriarGov2Click(Sender: TObject);
 begin
   FGoverno2 := TGoverno.New;
 
-  FGoverno2.SetPais('Paraguai');
+//  FGoverno2.SetPais('Paraguai');
 end;
 
 procedure TFPrincipal.btExibirGovClick(Sender: TObject);

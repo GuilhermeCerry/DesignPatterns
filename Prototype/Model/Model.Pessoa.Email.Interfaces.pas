@@ -15,7 +15,6 @@ type
     function SetEmail(AcEmail: String): iPessoaEmail;
     function GetDescricao: String;
     function Prototype: iPrototype<iPessoaEmail>;
-    function Clone: iPessoaEmail;
   end;
 
 implementation

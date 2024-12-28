@@ -11,7 +11,7 @@ type
 
   TGoverno = class(TInterfacedObject, iGoverno)
     private
-//      class var FInstance: iGoverno;
+      class var FInstance: iGoverno;
       FcPais: String;
     protected
       function SetPais(AcPais: String): iGoverno;
@@ -51,12 +51,12 @@ begin
 {Garante que seja criado somente um governo por país, ou seja, por mais que tente criar um novo governo,
 sempre será utilizadoa instância do primeiro governo criado}
 
-//  if not Assigned(FInstance) then
-//    FInstance :=  Self.Create;
-//
-//  Result := FInstance;
+  if not Assigned(FInstance) then
+    FInstance :=  Self.Create;
 
-  Result :=  Self.Create;
+  Result := FInstance;
+
+//  Result :=  Self.Create;
 end;
 
 function TGoverno.SetPais(AcPais: String): iGoverno;

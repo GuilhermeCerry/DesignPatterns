@@ -19,9 +19,6 @@ object FPrincipal: TFPrincipal
     Height = 152
     Align = alClient
     TabOrder = 0
-    ExplicitTop = 8
-    ExplicitWidth = 530
-    ExplicitHeight = 249
     object btCriarGov1: TButton
       Left = 32
       Top = 24
