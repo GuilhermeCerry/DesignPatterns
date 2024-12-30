@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask,
+  Model.Interfaces.Factory.Contabilidade;
 
 type
   TFPrinc = class(TForm)
@@ -14,7 +15,7 @@ type
     lbIDContabilidade: TLabeledEdit;
     procedure btContabilizarClick(Sender: TObject);
   private
-    { Private declarations }
+    FoFactoryContabilidade: iFactoryContabilidade;
   public
     { Public declarations }
   end;
@@ -27,8 +28,8 @@ implementation
 uses
   Model.Enum.Contabilidade,
 
-  Model.Contabilidade.Online,
-  Model.Contabilidade.Offline  ,
+//  Model.Contabilidade.Online,    //Deixa de ser necessário
+//  Model.Contabilidade.Offline,   //Deixa de ser necessário
 
   Model.Factory.Contabilidade;
 
@@ -36,14 +37,14 @@ uses
 
 procedure TFPrinc.btContabilizarClick(Sender: TObject);
 begin
-  {Com o padrão Factory Method é possível abstrair a criação do objeto para a classe factory,
-  deixando a cargo dela qual tipo de objeto deve ser criado de acordo com o parâmetro}
+  {Com o padrão Factory Method é possível criar somente um tipo de objeto, ou seja, contabilidade online ou offline}
 
-//  case rgContabilidade.ItemIndex of
-//    Ord(Model.Enum.Contabilidade.ttcOnline) : TContabilidadeOnline.New.Contabilizar(StrToInt(lbIDContabilidade.Text));
-//    Ord(Model.Enum.Contabilidade.ttcOffline) : TContabilidadeOffline.New.Contabilizar(StrToInt(lbIDContabilidade.Text));
-//  end;
-  TFactoryContabilidade.New.Contabilidade(TTipoContabilidade(rgContabilidade.ItemIndex)).Contabilizar(StrToInt(lbIDContabilidade.Text));
+  case rgContabilidade.ItemIndex of
+    Ord(Model.Enum.Contabilidade.ttcOnline) : FoFactoryContabilidade := TFactoryOnline.New;
+    Ord(Model.Enum.Contabilidade.ttcOffline) : FoFactoryContabilidade := TFactoryOffline.New;
+  end;
+
+  FoFactoryContabilidade.CreateContabilidade.Contabilizar(StrToInt(lbIDContabilidade.Text))
 end;
 
 end.

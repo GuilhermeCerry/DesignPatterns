@@ -10,7 +10,9 @@ object FPrinc: TFPrinc
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OldCreateOrder = True
   Position = poMainFormCenter
+  PixelsPerInch = 96
   TextHeight = 15
   object pnPrinc: TPanel
     Left = 0
@@ -41,7 +43,6 @@ object FPrinc: TFPrinc
       EditLabel.Caption = 'ID Contabilidade'
       NumbersOnly = True
       TabOrder = 1
-      Text = ''
     end
   end
   object btContabilizar: TButton

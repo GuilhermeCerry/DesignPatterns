@@ -8,7 +8,7 @@ uses
 type
   iFactoryContabilidade = interface
     ['{EEDAEBA3-5521-416B-A526-7B6B215D0147}']
-    function Contabilidade(AenTipoContabilidade: TTipoContabilidade): iContabilidade;
+    function CreateContabilidade: iContabilidade;
   end;
 
 implementation

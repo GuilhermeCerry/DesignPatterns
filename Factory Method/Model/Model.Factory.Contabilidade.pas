@@ -9,7 +9,25 @@ uses
 type
   TFactoryContabilidade = class(TInterfacedObject, iFactoryContabilidade)
     protected
-      function Contabilidade(AenTipoContabilidade: TTipoContabilidade): iContabilidade;
+      function CreateContabilidade: iContabilidade; virtual; abstract;
+    public
+      constructor Create;
+      destructor Destroy; override;
+      class function New: iFactoryContabilidade;
+  end;
+
+  TFactoryOnline = class(TFactoryContabilidade, iFactoryContabilidade)
+    protected
+      function CreateContabilidade: iContabilidade; override;
+    public
+      constructor Create;
+      destructor Destroy; override;
+      class function New: iFactoryContabilidade;
+  end;
+
+  TFactoryOffline = class(TFactoryContabilidade, iFactoryContabilidade)
+    protected
+      function CreateContabilidade: iContabilidade; override;
     public
       constructor Create;
       destructor Destroy; override;
@@ -23,15 +41,6 @@ uses
 
 { TFactoryContabilidade }
 
-function TFactoryContabilidade.Contabilidade(
-  AenTipoContabilidade: TTipoContabilidade): iContabilidade;
-begin
-  case AenTipoContabilidade of
-    Model.Enum.Contabilidade.ttcOnline : Result := TContabilidadeOnline.New;
-    Model.Enum.Contabilidade.ttcOffline : Result := TContabilidadeOffline.New;
-  end;
-end;
-
 constructor TFactoryContabilidade.Create;
 begin
   //
@@ -44,6 +53,52 @@ begin
 end;
 
 class function TFactoryContabilidade.New: iFactoryContabilidade;
+begin
+  Result := Self.Create;
+end;
+
+{ TFactoryOnline }
+
+constructor TFactoryOnline.Create;
+begin
+  //
+end;
+
+function TFactoryOnline.CreateContabilidade: iContabilidade;
+begin
+  Result := TContabilidadeOnline.New;
+end;
+
+destructor TFactoryOnline.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TFactoryOnline.New: iFactoryContabilidade;
+begin
+  Result := Self.Create;
+end;
+
+{ TFactoryOffline }
+
+constructor TFactoryOffline.Create;
+begin
+  //
+end;
+
+function TFactoryOffline.CreateContabilidade: iContabilidade;
+begin
+  Result := TContabilidadeOffline.New;
+end;
+
+destructor TFactoryOffline.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TFactoryOffline.New: iFactoryContabilidade;
 begin
   Result := Self.Create;
 end;
